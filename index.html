@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#1E1E1E" />
   <title>Leaderboard — Strategic Consulting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,8 +24,8 @@
   --white:        #fff;
 }
 
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--charcoal); color: var(--white); overflow-x: hidden; }
+html { scroll-behavior: smooth; background: #1E1E1E !important; }
+body { font-family: 'DM Sans', sans-serif; background: #1E1E1E !important; color: #ffffff !important; overflow-x: hidden; }
 
 /* ── NAV ── */
 nav {
@@ -39,7 +41,8 @@ nav {
 /* Logo mark — matches business card style */
 .logo {
   display: flex; align-items: center; gap: 10px;
-  text-decoration: none;
+  text-decoration: none !important;
+  color: #E8720C !important;
 }
 .logo-mark {
   width: 34px; height: 34px;
@@ -52,7 +55,7 @@ nav {
 .logo-text {
   font-family: 'Lobster', cursive;
   font-size: 1.7rem;
-  color: var(--orange);
+  color: #E8720C !important;
   letter-spacing: 0.3px;
   line-height: 1;
 }
@@ -331,7 +334,7 @@ footer p { font-size: 0.75rem; color: var(--ash); }
 
   </style>
 </head>
-<body>
+<body style="background:#1E1E1E;color:#ffffff;">
 
 <!-- NAV -->
 
