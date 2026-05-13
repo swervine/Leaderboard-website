@@ -7,602 +7,325 @@
   <title>Leaderboard — Strategic Consulting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lobster&family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 ```
 :root {
-  --orange:        #E8720C;
-  --orange-light:  #F59340;
-  --charcoal:      #1E1E1E;
-  --charcoal-mid:  #272727;
-  --charcoal-card: #2D2D2D;
-  --ash:           #9A9A9A;
-  --mist:          #C8C8C8;
-  --white:         #FFFFFF;
+  --orange:       #E8720C;
+  --orange-light: #F59340;
+  --charcoal:     #1E1E1E;
+  --card:         #272727;
+  --ash:          #888;
+  --mist:         #C4C4C4;
+  --white:        #fff;
 }
 
 html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--charcoal); color: var(--white); overflow-x: hidden; }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--charcoal);
-  color: var(--white);
-  overflow-x: hidden;
-}
-
-/* NAV */
+/* ── NAV ── */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 200;
-  padding: 0 52px;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(30,30,30,0.9);
-  backdrop-filter: blur(14px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 66px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(30,30,30,0.92);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
-.nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.55rem;
+/* Logo mark — matches business card style */
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.logo-mark {
+  width: 34px; height: 34px;
+  background: var(--orange);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark svg { width: 20px; height: 20px; }
+.logo-text {
+  font-family: 'Lobster', cursive;
+  font-size: 1.7rem;
   color: var(--orange);
-  text-decoration: none;
+  letter-spacing: 0.3px;
+  line-height: 1;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 40px;
-}
-
+.nav-links { list-style: none; display: flex; gap: 36px; align-items: center; }
 .nav-links a {
-  color: var(--ash);
-  text-decoration: none;
-  font-size: 0.78rem;
-  font-weight: 400;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
+  color: var(--ash); text-decoration: none;
+  font-size: 0.78rem; letter-spacing: 1.6px; text-transform: uppercase;
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--orange); }
-
 .nav-cta {
-  background: var(--orange) !important;
-  color: var(--white) !important;
-  padding: 8px 22px;
-  border-radius: 2px;
+  background: var(--orange) !important; color: var(--white) !important;
+  padding: 9px 22px; border-radius: 2px;
 }
 .nav-cta:hover { background: var(--orange-light) !important; }
 
 .nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
 }
-.nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--ash);
-}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ash); }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 52px 80px;
-  position: relative;
-  overflow: hidden;
+  display: flex; align-items: center;
+  padding: 120px 48px 80px;
+  position: relative; overflow: hidden;
 }
 
-.hero-glow {
-  position: absolute;
-  inset: 0;
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 65% 55% at 82% 48%, rgba(232,114,12,0.17) 0%, transparent 68%),
-    radial-gradient(ellipse 35% 40% at 8% 80%, rgba(232,114,12,0.07) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 50% at 85% 50%, rgba(232,114,12,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 5% 85%, rgba(232,114,12,0.08) 0%, transparent 55%);
   pointer-events: none;
 }
 
-.hero-glow::after {
+/* Orange vertical accent */
+.hero::after {
   content: '';
-  position: absolute;
-  top: 0; right: 28%;
+  position: absolute; top: 15%; right: 30%; bottom: 15%;
   width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent 0%, var(--orange) 40%, transparent 100%);
-  opacity: 0.2;
+  background: linear-gradient(to bottom, transparent, var(--orange) 50%, transparent);
+  opacity: 0.25;
 }
 
-.hero-content { position: relative; max-width: 740px; }
+.hero-inner { position: relative; max-width: 680px; }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 0.72rem;
-  letter-spacing: 2.8px;
-  text-transform: uppercase;
-  color: var(--orange);
-  font-weight: 500;
-  margin-bottom: 30px;
-  opacity: 0;
-  animation: fadeUp 0.7s ease 0.1s forwards;
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 0.7rem; letter-spacing: 2.8px; text-transform: uppercase;
+  color: var(--orange); font-weight: 500; margin-bottom: 28px;
+  opacity: 0; animation: up 0.6s ease 0.1s forwards;
 }
-.eyebrow::before {
-  content: '';
-  display: block;
-  width: 30px;
-  height: 1px;
-  background: var(--orange);
-}
+.hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--orange); }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -1.5px;
-  margin-bottom: 30px;
-  opacity: 0;
-  animation: fadeUp 0.7s ease 0.22s forwards;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 700; line-height: 1.06; letter-spacing: -1.5px;
+  margin-bottom: 24px;
+  opacity: 0; animation: up 0.6s ease 0.2s forwards;
 }
 .hero h1 em { font-style: italic; color: var(--orange); }
 
-.hero-sub {
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: var(--ash);
-  line-height: 1.75;
-  max-width: 480px;
-  margin-bottom: 52px;
-  opacity: 0;
-  animation: fadeUp 0.7s ease 0.36s forwards;
+.hero p {
+  font-size: 1.05rem; font-weight: 300; color: var(--ash);
+  line-height: 1.75; max-width: 440px; margin-bottom: 44px;
+  opacity: 0; animation: up 0.6s ease 0.32s forwards;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.7s ease 0.5s forwards;
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; animation: up 0.6s ease 0.44s forwards;
 }
 
 .btn {
-  display: inline-block;
-  text-decoration: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  padding: 15px 36px;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: all 0.2s;
+  display: inline-block; text-decoration: none;
+  font-size: 0.84rem; font-weight: 500; letter-spacing: 0.3px;
+  padding: 14px 34px; border-radius: 2px; cursor: pointer; transition: all 0.2s;
 }
 .btn-primary { background: var(--orange); color: var(--white); border: none; }
 .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
-.btn-ghost { background: transparent; color: var(--mist); border: 1px solid rgba(255,255,255,0.18); }
+.btn-ghost { background: transparent; color: var(--mist); border: 1px solid rgba(255,255,255,0.15); }
 .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
 
-.hero-watermark {
-  position: absolute;
-  right: -10px;
-  bottom: 20px;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: clamp(90px, 13vw, 200px);
-  color: rgba(232,114,12,0.055);
-  pointer-events: none;
-  white-space: nowrap;
-  line-height: 1;
-  animation: fadeIn 1.4s ease 0.9s both;
+.hero-wm {
+  position: absolute; right: -8px; bottom: 16px;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(80px, 12vw, 180px);
+  color: rgba(232,114,12,0.06); pointer-events: none;
+  line-height: 1; animation: fadein 1.2s ease 0.8s both;
 }
 
-/* STAT BAR */
-.stat-bar {
-  background: var(--charcoal-mid);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 40px 52px;
-  display: flex;
-  justify-content: center;
-  gap: 72px;
-  flex-wrap: wrap;
-}
-
-.stat { text-align: center; }
-
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
-  color: var(--orange);
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2.2px;
-  color: var(--ash);
-  margin-top: 8px;
-}
-
-/* SECTIONS */
-section { padding: 100px 52px; }
-
-.section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.7rem;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--orange);
-  font-weight: 500;
-  margin-bottom: 18px;
-}
-.section-tag::before {
-  content: '';
-  display: block;
-  width: 22px;
-  height: 1px;
+/* ── STATS ── */
+.stats {
   background: var(--orange);
+  padding: 36px 48px;
+  display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;
 }
+.stat { text-align: center; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--white); line-height: 1; }
+.stat-l { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.7); margin-top: 6px; }
 
-.section-title {
+/* ── SECTIONS ── */
+section { padding: 88px 48px; }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--orange); font-weight: 500; margin-bottom: 16px;
+}
+.tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--orange); }
+
+h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
-  font-weight: 700;
-  line-height: 1.12;
-  margin-bottom: 16px;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 700; line-height: 1.12; margin-bottom: 14px;
 }
-.section-title em { font-style: italic; color: var(--orange); }
+h2 em { font-style: italic; color: var(--orange); }
 
-/* ABOUT */
+/* ── ABOUT ── */
 #about {
   background: var(--charcoal);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
 }
 
-.about-text p {
-  color: var(--ash);
-  font-size: 1.05rem;
-  line-height: 1.8;
-  margin-top: 20px;
+.about-body p {
+  color: var(--ash); font-size: 1rem; line-height: 1.8; margin-top: 18px;
 }
-.about-text p + p { margin-top: 14px; }
 
 .about-card {
-  background: var(--charcoal-card);
+  background: var(--card);
   border: 1px solid rgba(255,255,255,0.06);
-  padding: 48px 44px;
-  position: relative;
+  padding: 44px 40px; position: relative;
 }
 .about-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px;
-  height: 60px;
-  background: var(--orange);
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 56px; background: var(--orange);
 }
-
-.about-quote {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.35rem;
-  line-height: 1.5;
-  color: var(--mist);
-  margin-bottom: 32px;
+.about-card blockquote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.25rem; line-height: 1.55; color: var(--mist); margin-bottom: 28px;
 }
-
-.detail-row {
-  display: flex;
-  gap: 12px;
-  font-size: 0.88rem;
-  color: var(--ash);
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+.drow {
+  display: flex; gap: 12px; font-size: 0.87rem; color: var(--ash);
+  padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.detail-row:last-child { border-bottom: none; }
-.detail-row strong { color: var(--mist); font-weight: 500; min-width: 90px; }
+.drow:last-child { border: none; }
+.drow strong { color: var(--mist); font-weight: 500; min-width: 80px; }
 
-/* SERVICES */
-#services { background: var(--charcoal-mid); }
+/* ── SERVICES ── */
+#services { background: #232323; }
+.svc-intro { max-width: 520px; margin-bottom: 52px; }
+.svc-intro p { color: var(--ash); font-size: 1rem; line-height: 1.75; margin-top: 14px; }
 
-.services-intro { max-width: 580px; margin-bottom: 60px; }
-.services-intro p { color: var(--ash); font-size: 1.05rem; line-height: 1.75; margin-top: 16px; }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2px;
+.svc {
+  background: var(--card); padding: 38px 34px;
+  position: relative; overflow: hidden; transition: background 0.2s;
 }
-
-.service-card {
-  background: var(--charcoal-card);
-  padding: 44px 38px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.25s;
+.svc::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 2px; background: var(--orange);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
 }
-.service-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--orange);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
+.svc:hover { background: #2e2e2e; }
+.svc:hover::after { transform: scaleX(1); }
+
+.svc-num {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 2rem; color: rgba(232,114,12,0.3); line-height: 1; margin-bottom: 16px;
 }
-.service-card:hover { background: #313131; }
-.service-card:hover::after { transform: scaleX(1); }
+.svc h3 { font-family: 'Playfair Display', serif; font-size: 1.08rem; margin-bottom: 10px; }
+.svc p { color: var(--ash); font-size: 0.88rem; line-height: 1.7; }
 
-.service-icon {
-  width: 38px;
-  height: 38px;
-  margin-bottom: 22px;
+/* ── CONTACT ── */
+#contact { background: var(--charcoal); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 48px; }
+
+.cinfo { display: flex; flex-direction: column; gap: 24px; }
+
+.crow { display: flex; align-items: flex-start; gap: 16px; }
+.cicon {
+  width: 40px; height: 40px; border-radius: 2px; flex-shrink: 0;
+  background: rgba(232,114,12,0.12); border: 1px solid rgba(232,114,12,0.3);
+  display: flex; align-items: center; justify-content: center;
 }
-
-.service-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.12rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.service-card p {
-  color: var(--ash);
-  font-size: 0.9rem;
-  line-height: 1.75;
-}
-
-/* ICT */
-#ict { background: var(--charcoal); }
-
-.ict-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
-  margin-top: 52px;
-}
-
-.ict-list { display: flex; flex-direction: column; gap: 2px; }
-
-.ict-item {
-  background: var(--charcoal-card);
-  padding: 18px 26px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.92rem;
-  color: var(--mist);
-  border-left: 2px solid transparent;
-  transition: border-color 0.2s, color 0.2s;
-}
-.ict-item:hover { border-left-color: var(--orange); color: var(--white); }
-
-.ict-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--orange);
-  flex-shrink: 0;
-}
-
-.ict-side p {
-  color: var(--ash);
-  font-size: 1.0rem;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.ict-callout {
-  background: var(--charcoal-card);
-  border: 1px solid rgba(232,114,12,0.28);
-  padding: 30px 32px;
-  margin-top: 12px;
-}
-
-.ict-callout-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--orange);
-  margin-bottom: 10px;
-}
-
-.ict-callout-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--white);
-}
-
-.ict-callout-sub {
-  font-size: 0.85rem;
-  color: var(--ash);
-  margin-top: 6px;
-  line-height: 1.5;
-}
-
-/* CONTACT */
-#contact { background: var(--charcoal-mid); }
-
-.contact-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-  margin-top: 52px;
-}
-
-.contact-info { display: flex; flex-direction: column; gap: 28px; }
-
-.contact-row { display: flex; align-items: flex-start; gap: 18px; }
-
-.contact-icon {
-  width: 42px; height: 42px;
-  background: rgba(232,114,12,0.1);
-  border: 1px solid rgba(232,114,12,0.25);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.contact-icon svg {
-  width: 18px; height: 18px;
-  stroke: var(--orange);
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.contact-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--orange);
-  margin-bottom: 4px;
-}
-
-.contact-value {
-  font-size: 0.95rem;
-  color: var(--mist);
-  line-height: 1.6;
-}
-.contact-value a { color: var(--mist); text-decoration: none; transition: color 0.2s; }
-.contact-value a:hover { color: var(--orange); }
-
-.contact-note { font-size: 0.78rem; color: var(--ash); font-style: italic; margin-top: 4px; }
+.cicon svg { width: 17px; height: 17px; stroke: var(--orange); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.clabel { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 2px; color: var(--orange); margin-bottom: 3px; }
+.cval { font-size: 0.93rem; color: var(--mist); line-height: 1.6; }
+.cval a { color: var(--mist); text-decoration: none; transition: color 0.2s; }
+.cval a:hover { color: var(--orange); }
+.cnote { font-size: 0.77rem; color: var(--ash); font-style: italic; margin-top: 3px; }
 
 /* form */
-.contact-form { display: flex; flex-direction: column; gap: 16px; }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-.form-field { display: flex; flex-direction: column; gap: 8px; }
-
-.form-field label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 1.8px;
-  color: var(--ash);
+.cform { display: flex; flex-direction: column; gap: 14px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ffield { display: flex; flex-direction: column; gap: 7px; }
+.ffield label { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 1.8px; color: var(--ash); }
+.ffield input, .ffield textarea {
+  background: var(--card); border: 1px solid rgba(255,255,255,0.09);
+  color: var(--white); padding: 12px 15px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+  border-radius: 2px; outline: none; transition: border-color 0.2s; resize: none;
 }
+.ffield input:focus, .ffield textarea:focus { border-color: var(--orange); }
+.ffield input::placeholder, .ffield textarea::placeholder { color: #444; }
+.ffield textarea { height: 120px; }
+.fnote { font-size: 0.76rem; color: var(--ash); margin-top: 6px; }
+.fnote a { color: var(--orange); text-decoration: none; }
 
-.form-field input,
-.form-field textarea {
-  background: var(--charcoal-card);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--white);
-  padding: 13px 16px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  border-radius: 2px;
-  outline: none;
-  transition: border-color 0.2s;
-  resize: none;
-}
-.form-field input:focus,
-.form-field textarea:focus { border-color: var(--orange); }
-.form-field input::placeholder,
-.form-field textarea::placeholder { color: #555; }
-.form-field textarea { height: 130px; }
-
-.form-note { font-size: 0.78rem; color: var(--ash); margin-top: 8px; }
-.form-note a { color: var(--orange); text-decoration: none; }
-
-/* FOOTER */
+/* ── FOOTER ── */
 footer {
-  background: var(--charcoal);
-  border-top: 1px solid rgba(255,255,255,0.07);
-  padding: 36px 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+  background: #181818;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 48px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
 }
 
-.footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--orange);
+.foot-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.foot-logo-mark {
+  width: 28px; height: 28px; background: var(--orange); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+}
+.foot-logo-mark svg { width: 16px; height: 16px; }
+.foot-logo-text {
+  font-family: 'Lobster', cursive;
+  font-size: 1.4rem; color: var(--orange); line-height: 1;
 }
 
-.footer-copy { font-size: 0.78rem; color: var(--ash); }
+footer p { font-size: 0.75rem; color: var(--ash); }
+.foot-links { display: flex; gap: 24px; list-style: none; }
+.foot-links a { font-size: 0.75rem; color: var(--ash); text-decoration: none; transition: color 0.2s; }
+.foot-links a:hover { color: var(--orange); }
 
-.footer-links { display: flex; gap: 28px; list-style: none; }
-.footer-links a { font-size: 0.78rem; color: var(--ash); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--orange); }
+/* ── ANIMATIONS ── */
+@keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadein { from { opacity:0; } to { opacity:1; } }
 
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.on { opacity: 1; transform: none; }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* MOBILE */
-@media (max-width: 768px) {
-  nav { padding: 0 24px; }
-
+/* ── MOBILE ── */
+@media (max-width: 720px) {
+  nav { padding: 0 20px; }
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 68px; left: 0; right: 0;
-    background: var(--charcoal-mid);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    padding: 12px 0;
-    gap: 0;
+    display: none; flex-direction: column; gap: 0;
+    position: absolute; top: 66px; left: 0; right: 0;
+    background: #232323; border-bottom: 1px solid rgba(255,255,255,0.07);
   }
   .nav-links.open { display: flex; }
-  .nav-links li a { display: block; padding: 14px 28px; }
+  .nav-links li a { display: block; padding: 14px 24px; }
   .nav-toggle { display: flex; }
 
-  .hero { padding: 100px 24px 64px; }
-  .hero-watermark { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-wm { display: none; }
+  .hero::after { display: none; }
 
-  .stat-bar { gap: 36px; padding: 32px 24px; }
+  .stats { gap: 32px; padding: 28px 20px; }
 
-  section { padding: 72px 24px; }
+  section { padding: 64px 20px; }
+  #about { grid-template-columns: 1fr; gap: 36px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+  .frow { grid-template-columns: 1fr; }
 
-  #about { grid-template-columns: 1fr; gap: 40px; }
-  .ict-grid { grid-template-columns: 1fr; gap: 32px; }
-  .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
-  .form-row { grid-template-columns: 1fr; }
-
-  footer { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  footer { flex-direction: column; align-items: flex-start; padding: 28px 20px; }
 }
 ```
 
@@ -613,14 +336,15 @@ footer {
 <!-- NAV -->
 
 <nav>
-  <a href="#home" class="nav-logo">Leaderboard</a>
+  <a href="#home" class="logo">
+    <span class="logo-text">Leaderboard</span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#ict">ICT</a></li>
     <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
   </ul>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -628,157 +352,94 @@ footer {
 <!-- HERO -->
 
 <div id="home" class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="eyebrow">Strategic Consulting · Canberra Region</div>
-    <h1>Winning<br>business<br><em>takes strategy.</em></h1>
-    <p class="hero-sub">
-      Leaderboard helps ICT companies and not-for-profits identify the right 
-      opportunities, craft compelling proposals, and build lasting government relationships.
-    </p>
-    <div class="hero-actions">
+  <div class="hero-inner">
+    <div class="hero-tag">Strategic Consulting · Canberra</div>
+    <h1>Winning business<br><em>takes strategy.</em></h1>
+    <p>We help ICT companies and not-for-profits identify the right opportunities, write winning proposals, and build lasting government relationships.</p>
+    <div class="hero-btns">
       <a href="#services" class="btn btn-primary">Our Services</a>
       <a href="#contact" class="btn btn-ghost">Talk to Rod</a>
     </div>
   </div>
-  <div class="hero-watermark">Leaderboard</div>
+  <div class="hero-wm">Leaderboard</div>
 </div>
 
-<!-- STAT BAR -->
+<!-- STATS — full orange bar -->
 
-<div class="stat-bar">
-  <div class="stat reveal">
-    <div class="stat-num">$250M+</div>
-    <div class="stat-label">Contracts Won</div>
-  </div>
-  <div class="stat reveal">
-    <div class="stat-num">10+</div>
-    <div class="stat-label">Years Operating</div>
-  </div>
-  <div class="stat reveal">
-    <div class="stat-num">ACT</div>
-    <div class="stat-label">Canberra Based</div>
-  </div>
-  <div class="stat reveal">
-    <div class="stat-num">24/7</div>
-    <div class="stat-label">Rod's Available</div>
-  </div>
+<div class="stats">
+  <div class="stat reveal"><div class="stat-n">$250M+</div><div class="stat-l">Contracts Won</div></div>
+  <div class="stat reveal"><div class="stat-n">10+</div><div class="stat-l">Years Operating</div></div>
+  <div class="stat reveal"><div class="stat-n">ACT</div><div class="stat-l">Canberra Based</div></div>
+  <div class="stat reveal"><div class="stat-n">24/7</div><div class="stat-l">Reachable</div></div>
 </div>
 
 <!-- ABOUT -->
 
 <section id="about">
-  <div class="about-text reveal">
-    <div class="section-tag">About</div>
-    <h2 class="section-title">Specialist consulting<br>with a <em>track record.</em></h2>
-    <p>Leaderboard has been operating since 2013, built on deep expertise in the ICT sector and a genuine commitment to client outcomes in the Canberra region.</p>
-    <p>We provide a range of services including business development, proposal and tender preparation, complex pricing models, and government relations. We've also helped not-for-profit organisations secure grant funding.</p>
-    <p>Our approach is hands-on, responsive, and grounded in real government and commercial experience.</p>
+  <div class="about-body reveal">
+    <div class="tag">About</div>
+    <h2>A track record<br>you can <em>rely on.</em></h2>
+    <p>Leaderboard has been operating since 2013, built on deep expertise in the ICT sector and a genuine commitment to client outcomes.</p>
+    <p>From business development to grant funding — we work hands-on alongside you from opportunity through to close.</p>
   </div>
   <div class="about-card reveal">
-    <p class="about-quote">"Helping our customers win in excess of $250 million in long-term ICT contracts."</p>
-    <div class="detail-row"><strong>Company</strong> Leaderboard Pty Ltd</div>
-    <div class="detail-row"><strong>ABN</strong> 60 165 286 653</div>
-    <div class="detail-row"><strong>Since</strong> 2013</div>
-    <div class="detail-row"><strong>Region</strong> Canberra, ACT/NSW</div>
-    <div class="detail-row"><strong>Contact</strong> Rod Irvine</div>
+    <blockquote>"Helping our customers win over $250 million in long-term ICT contracts."</blockquote>
+    <div class="drow"><strong>Company</strong> Leaderboard Pty Ltd</div>
+    <div class="drow"><strong>ABN</strong> 60 165 286 653</div>
+    <div class="drow"><strong>Since</strong> 2013</div>
+    <div class="drow"><strong>Region</strong> Canberra, ACT / NSW</div>
+    <div class="drow"><strong>Contact</strong> Rod Irvine</div>
   </div>
 </section>
 
 <!-- SERVICES -->
 
 <section id="services">
-  <div class="services-intro reveal">
-    <div class="section-tag">Services</div>
-    <h2 class="section-title">Everything you need<br>to <em>compete and win.</em></h2>
-    <p>End-to-end support across the business development lifecycle — from spotting the right opportunities right through to signed contracts.</p>
+  <div class="svc-intro reveal">
+    <div class="tag">Services</div>
+    <h2>Everything you need<br>to <em>compete and win.</em></h2>
+    <p>End-to-end support across the business development lifecycle — from spotting opportunities to signed contracts.</p>
   </div>
-
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <svg class="service-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="19" cy="19" r="17" stroke="#E8720C" stroke-width="1.5"/>
-        <path d="M12 19l5 5 9-10" stroke="#E8720C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+  <div class="svc-grid">
+    <div class="svc reveal">
+      <div class="svc-num">01</div>
       <h3>Business Development</h3>
-      <p>Identify, analyse, qualify, prioritise and pursue sales opportunities in the ICT sector with proven methodology and hands-on support.</p>
+      <p>Identify, qualify and pursue the right ICT sales opportunities with proven methodology.</p>
     </div>
-
-```
-<div class="service-card reveal">
-  <svg class="service-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="7" y="9" width="24" height="20" rx="2" stroke="#E8720C" stroke-width="1.5"/>
-    <path d="M13 15h12M13 19h8M13 23h5" stroke="#E8720C" stroke-width="1.8" stroke-linecap="round"/>
-  </svg>
-  <h3>RFT &amp; Proposal Responses</h3>
-  <p>Compelling, compliant tender writing that differentiates your offer, addresses evaluator criteria, and tells a story that wins.</p>
-</div>
-
-<div class="service-card reveal">
-  <svg class="service-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="19" cy="14" r="5" stroke="#E8720C" stroke-width="1.5"/>
-    <path d="M8 32c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke="#E8720C" stroke-width="1.5" stroke-linecap="round"/>
-  </svg>
-  <h3>Government Relations</h3>
-  <p>Navigate the Canberra landscape with confidence. Build the right relationships in government and the public sector before you need them.</p>
-</div>
-
-<div class="service-card reveal">
-  <svg class="service-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M7 28L19 10l12 18H7z" stroke="#E8720C" stroke-width="1.5" stroke-linejoin="round"/>
-    <path d="M13 23h12" stroke="#E8720C" stroke-width="1.8" stroke-linecap="round"/>
-  </svg>
-  <h3>Pricing Models</h3>
-  <p>Complex, competitive pricing strategies that reflect your true value while remaining compelling and defensible to government buyers.</p>
-</div>
-
-<div class="service-card reveal">
-  <svg class="service-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M11 13h16v16H11z" stroke="#E8720C" stroke-width="1.5" stroke-linejoin="round"/>
-    <path d="M15 19h8M15 23h5" stroke="#E8720C" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M15 13V10M23 13V10" stroke="#E8720C" stroke-width="1.5" stroke-linecap="round"/>
-  </svg>
-  <h3>Contract Negotiations</h3>
-  <p>Expert support through negotiation — protecting your interests and your margins while advancing deals to a successful close.</p>
-</div>
-
-<div class="service-card reveal">
-  <svg class="service-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M19 7v24M7 19h24" stroke="#E8720C" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="19" cy="19" r="7" stroke="#E8720C" stroke-width="1.5"/>
-  </svg>
-  <h3>Grant Funding</h3>
-  <p>Helping not-for-profit organisations identify grant opportunities and put forward applications that successfully secure funding.</p>
-</div>
-```
-
-  </div>
-</section>
-
-<!-- ICT -->
-
-<section id="ict">
-  <div class="section-tag reveal">ICT Expertise</div>
-  <h2 class="section-title reveal">Deep experience<br>across <em>modern ICT services.</em></h2>
-  <div class="ict-grid">
-    <div class="ict-list reveal">
-      <div class="ict-item"><span class="ict-dot"></span>Cloud-based Services</div>
-      <div class="ict-item"><span class="ict-dot"></span>Infrastructure-as-a-Service (IaaS)</div>
-      <div class="ict-item"><span class="ict-dot"></span>Software-as-a-Service (SaaS)</div>
-      <div class="ict-item"><span class="ict-dot"></span>Data Network-as-a-Service</div>
-      <div class="ict-item"><span class="ict-dot"></span>Telecommunications-as-a-Service</div>
-      <div class="ict-item"><span class="ict-dot"></span>Video Conferencing-as-a-Service</div>
-      <div class="ict-item"><span class="ict-dot"></span>Service Management-as-a-Service</div>
-      <div class="ict-item"><span class="ict-dot"></span>Server &amp; Storage Solutions</div>
+    <div class="svc reveal">
+      <div class="svc-num">02</div>
+      <h3>RFT &amp; Proposal Writing</h3>
+      <p>Compelling, compliant tenders that differentiate your offer and address evaluator criteria.</p>
     </div>
-    <div class="ict-side reveal">
-      <p>Our ICT sector focus means we understand your technology, your market, and the language your government customers speak.</p>
-      <p>We don't just help you write better proposals — we help you position strategically so you're competitive before the RFT is even published.</p>
-      <div class="ict-callout">
-        <div class="ict-callout-label">Proven Track Record</div>
-        <div class="ict-callout-num">$250M+</div>
-        <div class="ict-callout-sub">in long-term ICT products and services contracts helped to secure for our clients</div>
-      </div>
+    <div class="svc reveal">
+      <div class="svc-num">03</div>
+      <h3>Government Relations</h3>
+      <p>Build the right relationships in the Canberra landscape — before you need them.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">04</div>
+      <h3>Pricing Models</h3>
+      <p>Competitive pricing strategies that reflect your value and win government business.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">05</div>
+      <h3>Contract Negotiations</h3>
+      <p>Protecting your interests and margins while advancing deals to a successful close.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">06</div>
+      <h3>Grant Funding</h3>
+      <p>Helping not-for-profits identify and successfully secure grant funding.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">07</div>
+      <h3>Accounting &amp; Bookkeeping</h3>
+      <p>Reliable financial management to keep your business in order — from day-to-day bookkeeping to broader accounting support.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">08</div>
+      <h3>Analytics</h3>
+      <p>Turning your data into clear insights — helping you make smarter decisions and understand what's driving your business.</p>
     </div>
   </div>
 </section>
@@ -786,76 +447,45 @@ footer {
 <!-- CONTACT -->
 
 <section id="contact">
-  <div class="section-tag reveal">Contact</div>
-  <h2 class="section-title reveal">Let's talk about<br>your <em>next opportunity.</em></h2>
-
-  <div class="contact-wrap">
-    <div class="contact-info reveal">
-      <div class="contact-row">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
+  <div class="tag reveal">Contact</div>
+  <h2 class="reveal">Let's talk about your<br><em>next opportunity.</em></h2>
+  <div class="contact-grid">
+    <div class="cinfo reveal">
+      <div class="crow">
+        <div class="cicon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div>
-          <div class="contact-label">Address</div>
-          <div class="contact-value">104 Denley Drive, Bywong NSW 2621</div>
-          <div class="contact-note">Also: PO Box 6104, Griffith ACT 2600</div>
+          <div class="clabel">Address</div>
+          <div class="cval">104 Denley Drive, Bywong NSW 2621</div>
+          <div class="cnote">PO Box 6104, Griffith ACT 2600</div>
         </div>
       </div>
+      <div class="crow">
+        <div class="cicon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12.72 19.79 19.79 0 01.12 4.1 2 2 0 012.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div>
+          <div class="clabel">Phone</div>
+          <div class="cval"><a href="tel:+61424071927">+61 424 071 927</a></div>
+          <div class="cnote">Available outside business hours</div>
+        </div>
+      </div>
+      <div class="crow">
+        <div class="cicon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div>
+          <div class="clabel">Email</div>
+          <div class="cval"><a href="mailto:contact@leaderboard.net.au">contact@leaderboard.net.au</a></div>
+        </div>
+      </div>
+    </div>
 
 ```
-  <div class="contact-row">
-    <div class="contact-icon">
-      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12.72 19.79 19.79 0 01.12 4.1 2 2 0 012.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.574 2.81.7A2 2 0 0122 16.92z"/></svg>
-    </div>
-    <div>
-      <div class="contact-label">Phone</div>
-      <div class="contact-value"><a href="tel:+61424071927">+61 424 071 927</a></div>
-      <div class="contact-note">Available outside business hours</div>
-    </div>
+<div class="cform reveal">
+  <div class="frow">
+    <div class="ffield"><label for="fn">Name</label><input type="text" id="fn" placeholder="Your name" /></div>
+    <div class="ffield"><label for="fe">Email</label><input type="email" id="fe" placeholder="you@email.com" /></div>
   </div>
-
-  <div class="contact-row">
-    <div class="contact-icon">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    </div>
-    <div>
-      <div class="contact-label">Email</div>
-      <div class="contact-value"><a href="mailto:contact@leaderboard.net.au">contact@leaderboard.net.au</a></div>
-    </div>
-  </div>
-
-  <div class="contact-row">
-    <div class="contact-icon">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-    </div>
-    <div>
-      <div class="contact-label">Response Time</div>
-      <div class="contact-value">Rod can be contacted outside of business hours — don't hesitate to reach out.</div>
-    </div>
-  </div>
-</div>
-
-<div class="contact-form reveal">
-  <div class="form-row">
-    <div class="form-field">
-      <label for="fname">Name</label>
-      <input type="text" id="fname" placeholder="Your name" />
-    </div>
-    <div class="form-field">
-      <label for="femail">Email</label>
-      <input type="email" id="femail" placeholder="your@email.com" />
-    </div>
-  </div>
-  <div class="form-field">
-    <label for="fphone">Phone (optional)</label>
-    <input type="tel" id="fphone" placeholder="+61 400 000 000" />
-  </div>
-  <div class="form-field">
-    <label for="fmsg">Message</label>
-    <textarea id="fmsg" placeholder="Tell us about your opportunity or challenge…"></textarea>
-  </div>
-  <a href="#" class="btn btn-primary" onclick="handleSubmit(event)" style="margin-top:6px;">Send Message</a>
-  <p class="form-note">Or email directly: <a href="mailto:contact@leaderboard.net.au">contact@leaderboard.net.au</a></p>
+  <div class="ffield"><label for="fp">Phone (optional)</label><input type="tel" id="fp" placeholder="+61 400 000 000" /></div>
+  <div class="ffield"><label for="fm">Message</label><textarea id="fm" placeholder="Tell us about your opportunity…"></textarea></div>
+  <a href="#" class="btn btn-primary" onclick="send(event)">Send Message</a>
+  <p class="fnote">Or email: <a href="mailto:contact@leaderboard.net.au">contact@leaderboard.net.au</a></p>
 </div>
 ```
 
@@ -865,9 +495,11 @@ footer {
 <!-- FOOTER -->
 
 <footer>
-  <div class="footer-logo">Leaderboard</div>
-  <p class="footer-copy">© 2024 Leaderboard Pty Ltd · ABN 60 165 286 653</p>
-  <ul class="footer-links">
+  <div class="foot-logo">
+    <span class="foot-logo-text">Leaderboard</span>
+  </div>
+  <p>© 2024 Leaderboard Pty Ltd · ABN 60 165 286 653</p>
+  <ul class="foot-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -876,37 +508,33 @@ footer {
 
 <script>
   // Mobile nav
-  const toggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  const tog = document.getElementById('navToggle');
+  const nav = document.getElementById('navLinks');
+  tog.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
-  // Scroll reveal with stagger
-  const revealEls = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
-      siblings.forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), i * 90);
-      });
-      // Always mark this one visible immediately
-      entry.target.classList.add('visible');
-      obs.unobserve(entry.target);
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const siblings = [...e.target.parentElement.querySelectorAll('.reveal:not(.on)')];
+      siblings.forEach((el, i) => setTimeout(() => el.classList.add('on'), i * 80));
+      e.target.classList.add('on');
+      obs.unobserve(e.target);
     });
   }, { threshold: 0.1 });
-  revealEls.forEach(el => obs.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Form handler — mailto fallback (replace with Formspree/Netlify Forms for real sending)
-  function handleSubmit(e) {
+  // Form → mailto
+  function send(e) {
     e.preventDefault();
-    const name  = document.getElementById('fname').value.trim();
-    const email = document.getElementById('femail').value.trim();
-    const phone = document.getElementById('fphone').value.trim();
-    const msg   = document.getElementById('fmsg').value.trim();
-    if (!name || !email) { alert('Please enter your name and email.'); return; }
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\n${msg}`);
-    window.location.href = `mailto:contact@leaderboard.net.au?subject=Enquiry from ${encodeURIComponent(name)}&body=${body}`;
+    const n = document.getElementById('fn').value.trim();
+    const em = document.getElementById('fe').value.trim();
+    const p = document.getElementById('fp').value.trim();
+    const m = document.getElementById('fm').value.trim();
+    if (!n || !em) { alert('Please enter your name and email.'); return; }
+    const b = encodeURIComponent(`Name: ${n}\nEmail: ${em}\nPhone: ${p||'—'}\n\n${m}`);
+    window.location.href = `mailto:contact@leaderboard.net.au?subject=Enquiry from ${encodeURIComponent(n)}&body=${b}`;
   }
 </script>
 
