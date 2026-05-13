@@ -46,7 +46,7 @@ nav {
 }
 .logo-mark {
   width: 34px; height: 34px;
-  background: var(--orange);
+  background: #E8720C;
   border-radius: 2px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -66,9 +66,9 @@ nav {
   font-size: 0.78rem; letter-spacing: 1.6px; text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--orange); }
+.nav-links a:hover { color: #E8720C !important; }
 .nav-cta {
-  background: var(--orange) !important; color: var(--white) !important;
+  background: #E8720C !important; color: var(--white) !important;
   padding: 9px 22px; border-radius: 2px;
 }
 .nav-cta:hover { background: var(--orange-light) !important; }
@@ -110,10 +110,10 @@ nav {
 .hero-tag {
   display: inline-flex; align-items: center; gap: 12px;
   font-size: 0.7rem; letter-spacing: 2.8px; text-transform: uppercase;
-  color: var(--orange); font-weight: 500; margin-bottom: 28px;
+  color: #E8720C !important; font-weight: 500; margin-bottom: 28px;
   opacity: 0; animation: up 0.6s ease 0.1s forwards;
 }
-.hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--orange); }
+.hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: #E8720C; }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
@@ -122,7 +122,7 @@ nav {
   margin-bottom: 24px;
   opacity: 0; animation: up 0.6s ease 0.2s forwards;
 }
-.hero h1 em { font-style: italic; color: var(--orange); }
+.hero h1 em { font-style: italic; color: #E8720C !important; }
 
 .hero p {
   font-size: 1.05rem; font-weight: 300; color: var(--ash);
@@ -140,10 +140,10 @@ nav {
   font-size: 0.84rem; font-weight: 500; letter-spacing: 0.3px;
   padding: 14px 34px; border-radius: 2px; cursor: pointer; transition: all 0.2s;
 }
-.btn-primary { background: var(--orange); color: var(--white); border: none; }
-.btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
-.btn-ghost { background: transparent; color: var(--mist); border: 1px solid rgba(255,255,255,0.15); }
-.btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+.btn-primary { background: #E8720C !important; color: #ffffff !important; border: none !important; }
+.btn-primary:hover { background: #F59340 !important; color: #ffffff !important; transform: translateY(-2px); }
+.btn-ghost { background: transparent !important; color: #ffffff !important; border: 2px solid rgba(255,255,255,0.6) !important; }
+.btn-ghost:hover { border-color: #E8720C !important; color: #E8720C !important; }
 
 .hero-wm {
   position: absolute; right: -8px; bottom: 16px;
@@ -155,12 +155,12 @@ nav {
 
 /* ── STATS ── */
 .stats {
-  background: var(--orange);
+  background: #E8720C !important;
   padding: 36px 48px;
   display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;
 }
 .stat { text-align: center; }
-.stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--white); line-height: 1; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #ffffff !important; line-height: 1; }
 .stat-l { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.7); margin-top: 6px; }
 
 /* ── SECTIONS ── */
@@ -169,16 +169,16 @@ section { padding: 88px 48px; }
 .tag {
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--orange); font-weight: 500; margin-bottom: 16px;
+  color: #E8720C !important; font-weight: 500; margin-bottom: 16px;
 }
-.tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--orange); }
+.tag::before { content: ''; display: block; width: 20px; height: 1px; background: #E8720C; }
 
 h2 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 2.8vw, 2.6rem);
   font-weight: 700; line-height: 1.12; margin-bottom: 14px;
 }
-h2 em { font-style: italic; color: var(--orange); }
+h2 em { font-style: italic; color: #E8720C !important; }
 
 /* ── ABOUT ── */
 #about {
@@ -197,7 +197,7 @@ h2 em { font-style: italic; color: var(--orange); }
 }
 .about-card::before {
   content: ''; position: absolute; top: 0; left: 0;
-  width: 3px; height: 56px; background: var(--orange);
+  width: 3px; height: 56px; background: #E8720C;
 }
 .about-card blockquote {
   font-family: 'Playfair Display', serif; font-style: italic;
@@ -223,7 +223,7 @@ h2 em { font-style: italic; color: var(--orange); }
 }
 .svc::after {
   content: ''; position: absolute; bottom: 0; left: 0;
-  width: 100%; height: 2px; background: var(--orange);
+  width: 100%; height: 2px; background: #E8720C;
   transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
 }
 .svc:hover { background: #2e2e2e; }
@@ -248,11 +248,11 @@ h2 em { font-style: italic; color: var(--orange); }
   background: rgba(232,114,12,0.12); border: 1px solid rgba(232,114,12,0.3);
   display: flex; align-items: center; justify-content: center;
 }
-.cicon svg { width: 17px; height: 17px; stroke: var(--orange); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.clabel { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 2px; color: var(--orange); margin-bottom: 3px; }
+.cicon svg { width: 17px; height: 17px; stroke: #E8720C; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.clabel { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 2px; color: #E8720C !important; margin-bottom: 3px; }
 .cval { font-size: 0.93rem; color: var(--mist); line-height: 1.6; }
 .cval a { color: var(--mist); text-decoration: none; transition: color 0.2s; }
-.cval a:hover { color: var(--orange); }
+.cval a:hover { color: #E8720C !important; }
 .cnote { font-size: 0.77rem; color: var(--ash); font-style: italic; margin-top: 3px; }
 
 /* form */
@@ -266,11 +266,11 @@ h2 em { font-style: italic; color: var(--orange); }
   font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
   border-radius: 2px; outline: none; transition: border-color 0.2s; resize: none;
 }
-.ffield input:focus, .ffield textarea:focus { border-color: var(--orange); }
+.ffield input:focus, .ffield textarea:focus { border-color: #E8720C !important; }
 .ffield input::placeholder, .ffield textarea::placeholder { color: #444; }
 .ffield textarea { height: 120px; }
 .fnote { font-size: 0.76rem; color: var(--ash); margin-top: 6px; }
-.fnote a { color: var(--orange); text-decoration: none; }
+.fnote a { color: #E8720C !important; text-decoration: none; }
 
 /* ── FOOTER ── */
 footer {
@@ -284,19 +284,19 @@ footer {
   display: flex; align-items: center; gap: 10px;
 }
 .foot-logo-mark {
-  width: 28px; height: 28px; background: var(--orange); border-radius: 2px;
+  width: 28px; height: 28px; background: #E8720C; border-radius: 2px;
   display: flex; align-items: center; justify-content: center;
 }
 .foot-logo-mark svg { width: 16px; height: 16px; }
 .foot-logo-text {
   font-family: 'Lobster', cursive;
-  font-size: 1.4rem; color: var(--orange); line-height: 1;
+  font-size: 1.4rem; color: #E8720C !important; line-height: 1;
 }
 
 footer p { font-size: 0.75rem; color: var(--ash); }
 .foot-links { display: flex; gap: 24px; list-style: none; }
 .foot-links a { font-size: 0.75rem; color: var(--ash); text-decoration: none; transition: color 0.2s; }
-.foot-links a:hover { color: var(--orange); }
+.foot-links a:hover { color: #E8720C !important; }
 
 /* ── ANIMATIONS ── */
 @keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
@@ -360,8 +360,8 @@ footer p { font-size: 0.75rem; color: var(--ash); }
     <h1>Winning business<br><em>takes strategy.</em></h1>
     <p>We help ICT companies and not-for-profits identify the right opportunities, write winning proposals, and build lasting government relationships.</p>
     <div class="hero-btns">
-      <a href="#services" class="btn btn-primary">Our Services</a>
-      <a href="#contact" class="btn btn-ghost">Talk to Rod</a>
+      <a href="#services" class="btn btn-primary" style="background:#E8720C;color:#fff;padding:14px 34px;border-radius:2px;font-size:0.84rem;font-weight:500;display:inline-block;text-decoration:none;">Our Services</a>
+      <a href="#contact" class="btn btn-ghost" style="background:transparent;color:#fff;padding:14px 34px;border-radius:2px;font-size:0.84rem;font-weight:500;display:inline-block;text-decoration:none;border:2px solid rgba(255,255,255,0.6);">Talk to Rod</a>
     </div>
   </div>
   <div class="hero-wm">Leaderboard</div>
@@ -487,7 +487,7 @@ footer p { font-size: 0.75rem; color: var(--ash); }
   </div>
   <div class="ffield"><label for="fp">Phone (optional)</label><input type="tel" id="fp" placeholder="+61 400 000 000" /></div>
   <div class="ffield"><label for="fm">Message</label><textarea id="fm" placeholder="Tell us about your opportunity…"></textarea></div>
-  <a href="#" class="btn btn-primary" onclick="send(event)">Send Message</a>
+  <a href="#" onclick="send(event)" style="background:#E8720C;color:#fff;padding:14px 34px;border-radius:2px;font-size:0.84rem;font-weight:500;display:inline-block;text-decoration:none;cursor:pointer;">Send Message</a>
   <p class="fnote">Or email: <a href="mailto:contact@leaderboard.net.au">contact@leaderboard.net.au</a></p>
 </div>
 ```
