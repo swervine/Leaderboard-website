@@ -25,7 +25,18 @@
 }
 
 html { scroll-behavior: smooth; background: #1E1E1E !important; }
-body { font-family: 'DM Sans', sans-serif; background: #1E1E1E !important; color: #ffffff !important; overflow-x: hidden; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background:
+    radial-gradient(ellipse 80% 40% at 85% 8%, rgba(232,114,12,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 30% at 15% 30%, rgba(232,114,12,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 35% at 80% 55%, rgba(232,114,12,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 25% at 20% 75%, rgba(232,114,12,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 30% at 70% 90%, rgba(232,114,12,0.09) 0%, transparent 55%),
+    #1E1E1E !important;
+  color: #ffffff !important;
+  overflow-x: hidden;
+}
 
 /* ── NAV ── */
 nav {
@@ -90,9 +101,7 @@ nav {
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 85% 50%, rgba(232,114,12,0.22) 0%, transparent 65%),
-    radial-gradient(ellipse 30% 40% at 5% 85%, rgba(232,114,12,0.08) 0%, transparent 55%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -155,13 +164,15 @@ nav {
 
 /* ── STATS ── */
 .stats {
-  background: #E8720C !important;
-  padding: 36px 48px;
+  background: transparent !important;
+  padding: 48px;
   display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .stat { text-align: center; }
-.stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #ffffff !important; line-height: 1; }
-.stat-l { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #E8720C !important; line-height: 1; }
+.stat-l { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #888 !important; margin-top: 6px; }
 
 /* ── SECTIONS ── */
 section { padding: 88px 48px; }
@@ -182,7 +193,7 @@ h2 em { font-style: italic; color: #E8720C !important; }
 
 /* ── ABOUT ── */
 #about {
-  background: var(--charcoal);
+  background: transparent;
   display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
 }
 
@@ -191,7 +202,7 @@ h2 em { font-style: italic; color: #E8720C !important; }
 }
 
 .about-card {
-  background: var(--card);
+  background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
   padding: 44px 40px; position: relative;
 }
@@ -211,14 +222,14 @@ h2 em { font-style: italic; color: #E8720C !important; }
 .drow strong { color: var(--mist); font-weight: 500; min-width: 80px; }
 
 /* ── SERVICES ── */
-#services { background: #232323; }
+#services { background: rgba(255,255,255,0.02); }
 .svc-intro { max-width: 520px; margin-bottom: 52px; }
 .svc-intro p { color: var(--ash); font-size: 1rem; line-height: 1.75; margin-top: 14px; }
 
 .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; }
 
 .svc {
-  background: var(--card); padding: 38px 34px;
+  background: rgba(255,255,255,0.04); padding: 38px 34px;
   position: relative; overflow: hidden; transition: background 0.2s;
 }
 .svc::after {
@@ -237,7 +248,7 @@ h2 em { font-style: italic; color: #E8720C !important; }
 .svc p { color: var(--ash); font-size: 0.88rem; line-height: 1.7; }
 
 /* ── CONTACT ── */
-#contact { background: var(--charcoal); }
+#contact { background: transparent; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 48px; }
 
 .cinfo { display: flex; flex-direction: column; gap: 24px; }
@@ -261,7 +272,7 @@ h2 em { font-style: italic; color: #E8720C !important; }
 .ffield { display: flex; flex-direction: column; gap: 7px; }
 .ffield label { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 1.8px; color: var(--ash); }
 .ffield input, .ffield textarea {
-  background: var(--card); border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
   color: var(--white); padding: 12px 15px;
   font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
   border-radius: 2px; outline: none; transition: border-color 0.2s; resize: none;
@@ -274,7 +285,7 @@ h2 em { font-style: italic; color: #E8720C !important; }
 
 /* ── FOOTER ── */
 footer {
-  background: #181818;
+  background: rgba(0,0,0,0.3);
   border-top: 1px solid rgba(255,255,255,0.06);
   padding: 32px 48px;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
@@ -311,7 +322,7 @@ footer p { font-size: 0.75rem; color: var(--ash); }
   .nav-links {
     display: none; flex-direction: column; gap: 0;
     position: absolute; top: 66px; left: 0; right: 0;
-    background: #232323; border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.07);
   }
   .nav-links.open { display: flex; }
   .nav-links li a { display: block; padding: 14px 24px; }
@@ -334,7 +345,7 @@ footer p { font-size: 0.75rem; color: var(--ash); }
 
   </style>
 </head>
-<body style="background:#1E1E1E;color:#ffffff;">
+<body style="background:#1E1E1E;color:#ffffff;position:relative;">
 
 <!-- NAV -->
 
